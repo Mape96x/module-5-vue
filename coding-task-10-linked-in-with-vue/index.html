@@ -14,16 +14,17 @@
         <div id="app">
             <div class="gridOverview">
                 <h1>People you may know</h1>
+                <p :key="counter">{{counter}}</p>
                 <div id="grid">
-                    <div :style="{backgroundImage:`url(`+user.backgroundImage+`?ver=`+randomID()+`)`}"
-                        class=" personDiv" v-for="user of users">
+                    <div :style="{backgroundImage:`url(`+user.backgroundImage+`?ver=`+randomID()+`)`}" class="personDiv"
+                        v-for="user of users">
                         <picture><img class="profilePic" :src="user.picture">
                         </picture>
                         <h1>{{user.name.first + " " + user.name.last}}</h1>
                         <p>{{user.title}}</p>
                         <p>{{user.mutualConnections + " Mutual Connections"}}</p>
-                        <button class="deleteBtn">X</button>
-                        <button class="connectBtn">Connect</button>
+                        <button class="deleteBtn" @click="deleteUser(user)">X</button>
+                        <button class="connectBtn" @click="connect">Connect</button>
                     </div>
                 </div>
             </div>
