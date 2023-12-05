@@ -574,9 +574,7 @@ Vue.createApp({
   methods: {
     getDiscount(price) {
       const priceArr = price.split("").filter((obj) => obj !== "$");
-      console.log(priceArr);
       const newPrice = "$" + Math.round(priceArr.join("") * 0.8 * 100) / 100;
-
       return newPrice;
     },
   },

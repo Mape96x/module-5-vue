@@ -8,18 +8,6 @@ Vue.createApp({
     };
   },
   methods: {
-    setRed(event) {
-      this.r = event.target.value;
-      this.declareBackground();
-    },
-    setGreen(event) {
-      this.g = event.target.value;
-      this.declareBackground();
-    },
-    setBlue(event) {
-      this.b = event.target.value;
-      this.declareBackground();
-    },
     declareBackground() {
       document.body.style.background =
         "rgb(" + [this.r, this.g, this.b].join(",") + ")";
