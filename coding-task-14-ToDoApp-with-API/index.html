@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App API</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=aclonica:400|alegreya-sc:500" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <h1>Todo App</h1>
+        </header>
+        <main>
+            <ul id="filterList">
+                <li>
+                    <input type="radio" id="all" name="schwul" @click="filter = 'all', renderFilter" checked>
+                    <label>All</label><br>
+                </li>
+                <li><input type="radio" id="open" name="schwul" @click="filter = 'open', renderFilter">
+                    <label>Open</label><br>
+                </li>
+                <li><input type="radio" id="done" name="schwul" @click="filter = 'done',renderFilter">
+                    <label>Done</label><br>
+                </li>
+            </ul>
+            <button id="rmvDone" @click="removeDone">Remove done Todos</button>
+            <br>
+            <input @keyup.enter="addObj" ref="myInput" type="text" id="addTodo" name="addTodo" placeholder="Add Todo"
+                v-model="input">
+            <button id="addTodoBtn" @click="addObj">Add</button>
+            <ul id="todoList" v-for="todo of renderFilter">
+                <li :class="{ 'done': todo.done === true}">
+                    <input v-model="todo.done" type="checkbox" name="checkbox" id="checkbox_id"
+                        @change=" changeState(todo)">
+                    <label for=" checkbox_id" v-text="todo.description"></label>
+                </li>
+            </ul>
+        </main>
+    </div>
+    <script src=" https://unpkg.com/vue@next"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
