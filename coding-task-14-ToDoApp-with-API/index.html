@@ -33,14 +33,20 @@
             <input @keyup.enter="addObj" ref="myInput" type="text" id="addTodo" name="addTodo" placeholder="Add Todo"
                 v-model="input">
             <button id="addTodoBtn" @click="addObj">Add</button>
-            <ul id="todoList" v-for="todo of renderFilter">
-                <li :class="{ 'done': todo.done === true}">
-                    <input v-model="todo.done" type="checkbox" name="checkbox" id="checkbox_id"
-                        @change=" changeState(todo)">
-                    <label for=" checkbox_id" v-text="todo.description"></label>
-                </li>
-            </ul>
+            <section v-if="todos.length > 0">
+                <ul id="todoList" v-for="todo of renderFilter">
+                    <li :class="{ 'done': todo.done === true}">
+                        <input v-model="todo.done" type="checkbox" name="checkbox" id="checkbox_id"
+                            @change=" changeState(todo)">
+                        <label for=" checkbox_id" v-text="todo.description"></label>
+                    </li>
+                </ul>
+            </section>
+            <section v-else>
+                <p>Keine Todos vorhanden</p>
+            </section>
         </main>
+
     </div>
     <script src=" https://unpkg.com/vue@next"></script>
     <script src="script.js"></script>

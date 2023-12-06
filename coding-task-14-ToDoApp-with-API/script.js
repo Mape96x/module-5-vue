@@ -52,7 +52,7 @@ Vue.createApp({
       }
       return false;
     },
-    changeState(todo) {
+    changeState(todo, event) {
       this.changeTodoAPI(todo.id, todo);
     },
     changeTodoAPI(id, updatedTodo) {
