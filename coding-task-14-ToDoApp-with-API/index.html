@@ -38,7 +38,7 @@
                     <li :class="{ 'done': todo.done === true}">
                         <input v-model="todo.done" type="checkbox" name="checkbox" id="checkbox_id"
                             @change=" changeState(todo)">
-                        <label for=" checkbox_id" v-text="todo.description"></label>
+                        <label v-text="todo.description"></label>
                     </li>
                 </ul>
             </section>

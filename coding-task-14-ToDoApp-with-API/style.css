@@ -11,6 +11,8 @@ li {
   font-size: 0.8rem;
   list-style-type: none;
   color: black;
+  max-width: max-content;
+  padding-right: 1rem;
 }
 header,
 h1 {
@@ -62,4 +64,7 @@ input {
 .done {
   text-decoration: line-through;
   box-shadow: 1px 1px 3px 3px var(--clr-btnBackground);
+}
+#checkbox_id:hover {
+  scale: 1.5;
 }

@@ -10,15 +10,15 @@
 
 <body>
     <div id="app">
-        <header id="colorHead" @change="declareBackground">
+        <header id="colorHead" @change="onchange">
             <span>r</span>
-            <input v-model="r" id="i1" type="range" step="1" min="0" max="255">
+            <input v-model="rgb.r" id="i1" type="range" step="1" min="0" max="255">
             <span>g</span>
-            <input v-model="g" id="i2" type="range" step="1" min="0" max="255">
+            <input v-model="rgb.g" id="i2" type="range" step="1" min="0" max="255">
             <span>b</span>
-            <input v-model="b" id="i3" type="range" step="1" min="0" max="255">
+            <input v-model="rgb.b" id="i3" type="range" step="1" min="0" max="255">
             <p v-text="hexValue"></p>
-            <button id="APIColor">Random Color</button>
+            <button id="APIColor" @click="rndColor">Random Color</button>
         </header>
         <main id="colorMain">
 

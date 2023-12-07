@@ -1,25 +1,43 @@
 Vue.createApp({
   data() {
     return {
-      r: 0,
-      g: 0,
-      b: 0,
-      hex: "",
+      color: "",
+      rgb: { r: 0, g: 0, b: 0 },
     };
   },
   methods: {
+    rndColor() {
+      fetch("https://dummy-apis.netlify.app/api/color")
+        .then((request) => request.json())
+        .then((jsondata) => {
+          this.rgb = jsondata.rgb;
+          this.color = jsondata.color;
+          this.declareBackground();
+        });
+    },
     declareBackground() {
       document.body.style.background =
-        "rgb(" + [this.r, this.g, this.b].join(",") + ")";
+        "rgb(" + [this.rgb.r, this.rgb.g, this.rgb.b].join(",") + ")";
+    },
+    hexChange() {
+      r = Number(this.rgb.r).toString(16).toUpperCase();
+      g = Number(this.rgb.g).toString(16).toUpperCase();
+      b = Number(this.rgb.b).toString(16).toUpperCase();
+
+      this.color = "#" + r + g + b;
+    },
+    onchange() {
+      document.body.style.background =
+        "rgb(" + [this.rgb.r, this.rgb.g, this.rgb.b].join(",") + ")";
+      this.hexChange();
     },
   },
   computed: {
     hexValue() {
-      r = Number(this.r).toString(16);
-      g = Number(this.g).toString(16);
-      b = Number(this.b).toString(16);
-
-      return "#" + r + g + b;
+      return this.color;
     },
+  },
+  created() {
+    this.rndColor();
   },
 }).mount("#app");
